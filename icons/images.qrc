@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="image">
+    <file>icons8-school-96 (1).png</file>
+    <file>icons8-api-24 (1).png</file>
+    <file>icons8-business-report-24 (1).png</file>
+    <file>icons8-settings-24.png</file>
+    <file>icons8-upload-to-the-cloud-24.png</file>
+  </qresource>
+</RCC>
