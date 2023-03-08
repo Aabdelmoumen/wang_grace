@@ -1,9 +1,9 @@
-from PyQt5 import  QtWidgets
+from PyQt5 import QtWidgets
 from functools import partial
 from widgets.CustomCheckBox import CustomCheckBox
 from ui_app import Ui_MainWindow
 from functools import partial
-from PyQt5.QtCore import QThreadPool
+from PyQt5.QtCore import QThreadPool, QDate
 from time import sleep
 from pages.Worker import Worker
 
@@ -46,7 +46,9 @@ class UploadData:
         # hide the status
         self.ui.status_label.setText("")
 
-       
+        # set the date to the previous day
+        date = QDate.currentDate().addDays(-1)  # Get the previous day's date
+        self.ui.dateEdit.setDate(date)
 
     def check_box_status(self, check_box: QtWidgets.QCheckBox):
         """_summary_
@@ -63,8 +65,6 @@ class UploadData:
 
     def upload_function(self):
         """_summary_"""
-
-       
 
         # update the label status
         self.ui.status_label.setText("Uploading ...")

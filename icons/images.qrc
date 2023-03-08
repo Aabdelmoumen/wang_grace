@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="image">
+    <file>icons8-paint-palette-24.png</file>
     <file>icons8-school-96 (1).png</file>
     <file>icons8-api-24 (1).png</file>
     <file>icons8-business-report-24 (1).png</file>

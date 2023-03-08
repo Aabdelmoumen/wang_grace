@@ -1,9 +1,9 @@
-from PyQt5 import  QtWidgets
+from PyQt5 import QtWidgets
 from functools import partial
 from ui_app import Ui_MainWindow
 from widgets.CustomCheckBox import CustomCheckBox
 from time import sleep
-from PyQt5.QtCore import QThreadPool
+from PyQt5.QtCore import QThreadPool, QDate
 from pages.Worker import Worker
 
 
@@ -37,7 +37,11 @@ class RunReports:
 
         # hide the status
         self.ui.status_label_2.setText("")
-    
+
+        # set the date to the previous day
+        date = QDate.currentDate().addDays(-1)  # Get the previous day's date
+        self.ui.dateEdit_2.setDate(date)
+
     def check_box_status(self, check_box: QtWidgets.QCheckBox):
         """_summary_
 
@@ -45,16 +49,17 @@ class RunReports:
             check_box (QtWidgets.QCheckBox): check box clicked
         """
         print(check_box.isChecked(), check_box.text())
-    
+
     def page_buttons_action(self):
         """_summary_"""
 
-        self.ui.generate_report_pushButton.clicked.connect(partial(self.generate_report_function))
+        self.ui.generate_report_pushButton.clicked.connect(
+            partial(self.generate_report_function)
+        )
 
     def generate_report_function(self):
         """_summary_"""
 
-       
         # update the label status
         self.ui.status_label_2.setText("Generating report ...")
 
@@ -93,4 +98,3 @@ class RunReports:
 
     def thread_finished(self):
         self.ui.status_label_2.setText("Report generated successfully")
-

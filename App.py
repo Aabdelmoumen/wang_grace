@@ -10,7 +10,8 @@ from pages.UploadData import UploadData
 from pages.RunReports import RunReports
 from pages.ApiUse import ApiUse
 from pages.UserSettings import UserSettings
-
+from pages.ThemeSettings import ThemeSettings
+from q_css import pages_theme , vertical_panel_theme
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -23,6 +24,7 @@ class MainWindow(QMainWindow):
             self.ui.run_reports_button,
             self.ui.api_use_button,
             self.ui.user_settings_button,
+            self.ui.theme_settings_button,
         ]
         self.page_buttons_index_map: Dict[str, int] = {
             button.objectName(): index for index, button in enumerate(self.page_buttons)
@@ -33,10 +35,13 @@ class MainWindow(QMainWindow):
 
     def init_pages(self):
         """_summary_"""
+        
+
         UploadData(main_window=self)
         RunReports(main_window=self)
         ApiUse(main_window=self)
         UserSettings(main_window=self)
+        ThemeSettings(main_window=self)
 
     def pages_buttons_action(self) -> None:
         """_summary_"""
@@ -81,3 +86,8 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
     sys.exit(app.exec_())
+
+
+
+
+
