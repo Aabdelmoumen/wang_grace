@@ -21,10 +21,10 @@ On the right frame: need 1 QDateEdit to select the date, 1 folder selector, 1 fi
 Page 4 User setting:
 Need 2 different user settings:
 
-1. Snowflake user setting:
+1. [ ] Snowflake user setting:
    Need input account, region, user, authenticator method, warehouse, database, schema, and role
    They'll all take some default value 'abcdefg'
-2. Project user setting:
+2. [ ] Project user setting:
    Need account and password
    They'll all take some default value 'abcdefg'
 
