@@ -4,7 +4,7 @@ from ui_app import Ui_MainWindow
 from widgets.CustomCheckBox import CustomCheckBox
 from time import sleep
 from PyQt5.QtCore import QDate
-
+from pages.utils import get_all_widgets_in_layout
 
 CHECK_BOX_FILES_NAMES_G1 = [f"G1 file name num {index}" for index in range(0, 10)]
 
@@ -56,6 +56,15 @@ class ApiUse:
 
     def generate_file_function(self):
         """_summary_"""
+
+        list_of_checked_widgets_G1 = get_all_widgets_in_layout(
+            layout=self.ui.verticalLayout_25
+        )
+
+        print(
+            "list of the check box selected in G1",
+            [check_box.text() for check_box in list_of_checked_widgets_G1],
+        )
 
         # update the label status
         self.ui.status_label_3.setText("Generating file ...")

@@ -5,7 +5,7 @@ from widgets.CustomCheckBox import CustomCheckBox
 from time import sleep
 from PyQt5.QtCore import QThreadPool, QDate
 from pages.Worker import Worker
-
+from pages.utils import get_all_widgets_in_layout
 
 CHECK_BOX_FILES_NAMES_G1 = [f"G1 file name num {index}" for index in range(0, 10)]
 CHECK_BOX_FILES_NAMES_G2 = [f"G2 file name num {index}" for index in range(0, 10)]
@@ -59,6 +59,23 @@ class RunReports:
 
     def generate_report_function(self):
         """_summary_"""
+
+        list_of_checked_widgets_G1 = get_all_widgets_in_layout(
+            layout=self.ui.verticalLayout_16
+        )
+        list_of_checked_widgets_G2 = get_all_widgets_in_layout(
+            layout=self.ui.verticalLayout_18
+        )
+       
+
+        print(
+            "list of the check box selected in G1",
+            [check_box.text() for check_box in list_of_checked_widgets_G1],
+        )
+        print(
+            "list of the check box selected in G2",
+            [check_box.text() for check_box in list_of_checked_widgets_G2],
+        )
 
         # update the label status
         self.ui.status_label_2.setText("Generating report ...")

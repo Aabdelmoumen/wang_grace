@@ -6,6 +6,7 @@ from functools import partial
 from PyQt5.QtCore import QThreadPool, QDate
 from time import sleep
 from pages.Worker import Worker
+from pages.utils import get_all_widgets_in_layout
 
 CHECK_BOX_FILES_NAMES_G1 = [f"G1 file name num {index}" for index in range(0, 10)]
 CHECK_BOX_FILES_NAMES_G2 = [f"G2 file name num {index}" for index in range(0, 10)]
@@ -56,7 +57,8 @@ class UploadData:
         Args:
             check_box (QtWidgets.QCheckBox): check box clicked
         """
-        print(check_box.isChecked(), check_box.text())
+        # print(check_box.isChecked(), check_box.text())
+        pass
 
     def page_buttons_action(self):
         """_summary_"""
@@ -65,6 +67,30 @@ class UploadData:
 
     def upload_function(self):
         """_summary_"""
+
+        # get the Q check box that are selected
+        list_of_checked_widgets_G1 = get_all_widgets_in_layout(
+            layout=self.ui.verticalLayout_6
+        )
+        list_of_checked_widgets_G2 = get_all_widgets_in_layout(
+            layout=self.ui.verticalLayout_10
+        )
+        list_of_checked_widgets_G3 = get_all_widgets_in_layout(
+            layout=self.ui.verticalLayout_8
+        )
+
+        print(
+            "list of the check box selected in G1",
+            [check_box.text() for check_box in list_of_checked_widgets_G1],
+        )
+        print(
+            "list of the check box selected in G2",
+            [check_box.text() for check_box in list_of_checked_widgets_G2],
+        )
+        print(
+            "list of the check box selected in G3",
+            [check_box.text() for check_box in list_of_checked_widgets_G3],
+        )
 
         # update the label status
         self.ui.status_label.setText("Uploading ...")
